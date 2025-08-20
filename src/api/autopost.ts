@@ -1,9 +1,9 @@
-import { postbyAI } from "../../lib/geminiai.js";
-import { searchTrendingTopic } from "../../lib/search.js";
-import { fetchParagraphs } from "../../lib/getpara.js";
-import { searchTopics, directTopics } from '../../constants/alltopics.js'
-import { POSTtoTwitter } from "../../lib/posttox.js";
-// import type { NextApiRequest, NextApiResponse } from "next";
+import { postbyAI } from "../lib/geminiai.js";
+import { searchTrendingTopic } from "../lib/search.js";
+import { fetchParagraphs } from "../lib/getpara.js";
+import { searchTopics, directTopics } from '../constants/alltopics.js'
+import { POSTtoTwitter } from "../lib/posttox.js";
+import type { Request, Response } from "express";
 async function createPost() {
     try {
         const isRandom = Math.random() > 0.5;
@@ -58,7 +58,7 @@ async function createPost() {
     }
 }
 
-export async function schedular(req: any, res: any) {
+export async function schedular(req: Request, res: Response) {
     const result = await createPost();
     if (result.success) {
         return res.status(200).json(result);

@@ -1,8 +1,6 @@
 import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
-console.log(process.env.API_KEY);
-console.log(process.env.SEARCH_ENGINE_ID);
 export async function searchTrendingTopic(q) {
     const res = await axios.get("https://www.googleapis.com/customsearch/v1", {
         params: {
