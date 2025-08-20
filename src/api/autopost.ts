@@ -10,7 +10,7 @@ async function createPost() {
         let tweetAI: string | null = null
         if (isRandom) {
             if (!searchTopics.length) throw new Error("No search direct topics found");
-            const topic = searchTopics[Math.floor(Math.random() * directTopics.length)];
+            const topic = searchTopics[Math.floor(Math.random() * searchTopics.length)];
             console.log("TOPIC IS FROM SEARCH: ", topic);
             if (!topic) throw new Error("No direct topics found");
             const search = await searchTrendingTopic(topic);
@@ -38,7 +38,7 @@ async function createPost() {
         }
         else {
             if (!directTopics.length) throw new Error("No search direct topics found");
-            const topic = directTopics[Math.floor(Math.random() * searchTopics.length)];
+            const topic = directTopics[Math.floor(Math.random() * directTopics.length)];
             console.log("TOPIC IS FROM DIRECT: ", topic);
             if (!topic) throw new Error("No search topics found");
             tweetAI = (await postbyAI(topic)) ?? null;
